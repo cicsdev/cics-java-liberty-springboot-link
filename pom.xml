@@ -59,7 +59,7 @@
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
 
-    <!-- Exclude Tomcat from the WAR build -->
+    <!-- Exclude Tomcat from the runtime build -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-tomcat</artifactId>
