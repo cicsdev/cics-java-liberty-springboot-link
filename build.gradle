@@ -48,9 +48,6 @@ dependencies
     // Enable to the Link to Liberty annotation processor
     annotationProcessor ("com.ibm.cics:com.ibm.cics.server.invocation")
     
-    // monitor
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    
     // Theymeleaf view
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
       
