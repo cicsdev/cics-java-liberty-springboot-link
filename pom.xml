@@ -12,7 +12,7 @@
 
   <!--  Application properties -->
   <groupId>com.ibm.cicsdev</groupId>
-  <artifactId>com.ibm.cicsdev.springboot.link</artifactId>
+  <artifactId>cics-java-liberty-springboot-link</artifactId>
   <version>0.1.0</version>
   <name>com.ibm.cicsdev.springboot.link</name>
   <description>Demo project for Spring Boot</description>	
