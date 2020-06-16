@@ -11,7 +11,7 @@
   </parent>
 
   <!--  Application properties -->
-  <groupId>com.ibm.cicsdev</groupId>
+  <groupId>com.ibm.cicsdev.springboot</groupId>
   <artifactId>cics-java-liberty-springboot-link</artifactId>
   <version>0.1.0</version>
   <name>com.ibm.cicsdev.springboot.link</name>
