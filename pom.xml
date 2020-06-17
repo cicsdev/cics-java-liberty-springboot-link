@@ -14,7 +14,7 @@
   <groupId>com.ibm.cicsdev.springboot</groupId>
   <artifactId>cics-java-liberty-springboot-link</artifactId>
   <version>0.1.0</version>
-  <name>com.ibm.cicsdev.springboot.link</name>
+  <name>cics-java-liberty-springboot-link</name>
   <description>Demo project for Spring Boot</description>	
   <properties>
     <java.version>1.8</java.version>
