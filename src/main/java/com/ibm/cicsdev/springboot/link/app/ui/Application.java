@@ -24,11 +24,17 @@ import org.springframework.core.convert.converter.Converter;
 @SpringBootApplication
 public class Application {
 
+	/**
+	 * @return, a new InMemoryMessageRepository
+	 */
 	@Bean
 	public MessageRepository messageRepository() {
 		return new InMemoryMessageRepository();
 	}
 
+	/**
+	 * @return, a message by id 
+	 */
 	@Bean
 	public Converter<String, Message> messageConverter() {
 		return new Converter<String, Message>() {
