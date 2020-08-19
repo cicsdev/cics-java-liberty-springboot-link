@@ -1,6 +1,6 @@
 # cics-java-liberty-springboot-link
 
-This is a sample for Link to Liberty, demonstrating how you can invoke a Spring Boot application in a Liberty JVM server from a CICS program. The application is based on a Spring Boot sample application that demonstrates Spring MVC, so has both a web front-end and a CICS entry point. The sample shows how both entry points can access the same data.
+This sample demonstrates how you can link to a Spring Boot application in a Liberty JVM server from a CICS program. The application is based on a Spring Boot sample application that demonstrates Spring MVC, so has both a web front-end and a CICS entry point using the link to Liberty `@CICSProgram` annotation. The sample shows how both entry points can access the same data.
 
 ## Prerequisites
 
@@ -152,4 +152,4 @@ The CICS entry point for the application is in [CICSCallable.java](src/main/java
 `callMeFromCICS()` is the method that CICS will invoke when you perform an `EXEC CICS LINK PROGRAM(YOSPRING)`.  This is specified by the `@CICSProgram` annotation.  The code obtains the current channel and gets a container in order to obtain the data passed by the calling COBOL program.  It then creates a message in the `MessageRespoitory`. 
 
 ## License
-This project is licensed under [Apache License Version 2.0](LICENSE). 
+This project is licensed under [Eclipse Public License - v 2.0](LICENSE). 
