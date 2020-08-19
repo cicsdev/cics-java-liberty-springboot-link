@@ -1,6 +1,6 @@
 plugins
 {
-	id 'org.springframework.boot' version '2.2.5.RELEASE'
+	id 'org.springframework.boot' version '2.3.0.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 	id 'eclipse'
@@ -32,25 +32,24 @@ repositories
 
 dependencies 
 {
-    // Spring web support
+    // Spring Boot web starter dependency
     implementation("org.springframework.boot:spring-boot-starter-web")
+	
+	// Spring Boot thymeleaf view dependency
+	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 
     // Don't include TomCat in the runtime build, but do put it in WEB-INF so it can be run standalone a well as embedded
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
   
     // CICS TS V5.5 Maven BOM (as of 19th May 2020)
-    compileOnly enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")
+    compileOnly enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")	
     annotationProcessor enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20191121085445-PH14856")
+	
+	// Don't include JCICS in the final build (no need for version because we have BOM)
+    compileOnly("com.ibm.cics:com.ibm.cics.server")                 
+
+    // Enable CICS Link to Liberty annotation processor
+	compileOnly ("com.ibm.cics:com.ibm.cics.server.invocation.annotations")
+    annotationProcessor ("com.ibm.cics:com.ibm.cics.server.invocation")      
     
-    //Compile 
-    compileOnly ("com.ibm.cics:com.ibm.cics.server.invocation.annotations")
-    
-    // Enable to the Link to Liberty annotation processor
-    annotationProcessor ("com.ibm.cics:com.ibm.cics.server.invocation")
-    
-    // Theymeleaf view
-	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
-      
-    // Don't include JCICS in the final build (no need for version because we have BOM)
-    compileOnly("com.ibm.cics:com.ibm.cics.server")              
 }
