@@ -35,8 +35,8 @@ dependencies
     // Spring Boot web starter dependency
     implementation("org.springframework.boot:spring-boot-starter-web")
 	
-	// Spring Boot thymeleaf view dependency
-	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    // Spring Boot thymeleaf view dependency
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 
     // Don't include TomCat in the runtime build, but do put it in WEB-INF so it can be run standalone a well as embedded
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
@@ -45,11 +45,11 @@ dependencies
     compileOnly enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")	
     annotationProcessor enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20191121085445-PH14856")
 	
-	// Don't include JCICS in the final build (no need for version because we have BOM)
+    // Don't include JCICS in the final build (no need for version because we have BOM)
     compileOnly("com.ibm.cics:com.ibm.cics.server")                 
 
     // Enable CICS Link to Liberty annotation processor
-	compileOnly ("com.ibm.cics:com.ibm.cics.server.invocation.annotations")
+    compileOnly ("com.ibm.cics:com.ibm.cics.server.invocation.annotations")
     annotationProcessor ("com.ibm.cics:com.ibm.cics.server.invocation")      
     
 }
