@@ -131,7 +131,7 @@ This creates a WAR file inside the `target` directory.
 1. Ensure the web application started successfully in Liberty by checking for msg `CWWKT0016I` in the Liberty messages.log:
    
     - `A CWWKT0016I: Web application available (default_host): http://myzos.mycompany.com:httpPort/cics-java-liberty-springboot-link-0.1.0`
-    - `I SRVE0292I: Servlet Message - [com.ibm.cicsdev.springboot.link-0.1.0]:.Initializing Spring embedded WebApplicationContext`
+    - `I SRVE0292I: Servlet Message - [cics-java-liberty-springboot.link-0.1.0]:.Initializing Spring embedded WebApplicationContext`
 
 2. You can use the COBOL program provided in this repository to invoke the Spring Boot application.  Compile [GOSPRING.cbl](cobol/GOSPRING.cbl) and put the load module in a suitable load library.  Define and install a CICS transaction with GOSPRING as the initial program, and start it from a terminal. 
 

@@ -16,13 +16,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.convert.converter.Converter;
 
 @SpringBootApplication
-public class Application {
-
+public class Application 
+{
 	/**
 	 * @return, a new InMemoryMessageRepository
 	 */
 	@Bean
-	public MessageRepository messageRepository() {
+	public MessageRepository messageRepository() 
+	{
 		return new InMemoryMessageRepository();
 	}
 
@@ -30,16 +31,20 @@ public class Application {
 	 * @return, a message by id 
 	 */
 	@Bean
-	public Converter<String, Message> messageConverter() {
-		return new Converter<String, Message>() {
+	public Converter<String, Message> messageConverter() 
+	{
+		return new Converter<String, Message>() 
+		{
 			@Override
-			public Message convert(String id) {
+			public Message convert(String id) 
+			{
 				return messageRepository().findMessage(Long.valueOf(id));
 			}
 		};
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		SpringApplication.run(Application.class, args);
 	}
 

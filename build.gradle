@@ -51,7 +51,6 @@ dependencies
     // Don't include JCICS components in the final build (no need for version because we have BOM)
     compileOnly("com.ibm.cics:com.ibm.cics.server")                 
     compileOnly ("com.ibm.cics:com.ibm.cics.server.invocation.annotations")
-
   
     
 }

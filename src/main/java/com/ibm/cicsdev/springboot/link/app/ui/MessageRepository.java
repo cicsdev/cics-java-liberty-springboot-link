@@ -11,12 +11,8 @@
 
 package com.ibm.cicsdev.springboot.link.app.ui;
 
-/**
- * @author Matthew Willson, Ivan Hargreaves
- *
- */
-public interface MessageRepository {
-
+public interface MessageRepository 
+{
 	/**
 	 * @return Iterable<Message>, all messages
 	 */
@@ -38,5 +34,4 @@ public interface MessageRepository {
 	 * @param id
 	 */
 	void deleteMessage(Long id);
-
 }

@@ -21,14 +21,10 @@ import com.ibm.cics.server.invocation.CICSProgram;
 import com.ibm.cicsdev.springboot.link.app.ui.Message;
 import com.ibm.cicsdev.springboot.link.app.ui.MessageRepository;
 
-/**
- * @author Matthew Willson, Ivan Hargreaves, Anneli
- *
- */
-@Component
-public class CICSCallable {
 
-	
+@Component
+public class CICSCallable 
+{
 	@Autowired
 	private MessageRepository messageRepo;
 
@@ -44,10 +40,9 @@ public class CICSCallable {
 	 * @throws CodePageErrorException
 	 */
 	@CICSProgram(value ="YOSPRING") // This method can be invoked by EXEC CICS LINK PROGRAM(YOSPRING)
-	public void callMeFromCICS() throws ContainerErrorException, ChannelErrorException, CCSIDErrorException, CodePageErrorException {
-		
-		String messageText = Task.getTask().getCurrentChannel().getContainer("MESSAGE").getString();
-		
+	public void callMeFromCICS() throws ContainerErrorException, ChannelErrorException, CCSIDErrorException, CodePageErrorException 
+	{	
+		String messageText = Task.getTask().getCurrentChannel().getContainer("MESSAGE").getString();	
 		Message msg = new Message();
 		msg.setSummary("Message from CICS");
 		msg.setText(messageText);

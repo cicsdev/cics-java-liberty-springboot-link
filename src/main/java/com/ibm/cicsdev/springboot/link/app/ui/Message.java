@@ -15,8 +15,8 @@ import java.util.Calendar;
 
 import javax.validation.constraints.NotEmpty;
 
-public class Message {
-
+public class Message 
+{
 	private Long id;
 
 	@NotEmpty(message = "Text is required.")
@@ -27,35 +27,43 @@ public class Message {
 
 	private Calendar created = Calendar.getInstance();
 
-	public Long getId() {
+	public Long getId() 
+	{
 		return this.id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Long id) 
+	{
 		this.id = id;
 	}
 
-	public Calendar getCreated() {
+	public Calendar getCreated() 
+	{
 		return this.created;
 	}
 
-	public void setCreated(Calendar created) {
+	public void setCreated(Calendar created) 
+	{
 		this.created = created;
 	}
 
-	public String getText() {
+	public String getText() 
+	{
 		return this.text;
 	}
 
-	public void setText(String text) {
+	public void setText(String text) 
+	{
 		this.text = text;
 	}
 
-	public String getSummary() {
+	public String getSummary() 
+	{
 		return this.summary;
 	}
 
-	public void setSummary(String summary) {
+	public void setSummary(String summary) 
+	{
 		this.summary = summary;
 	}
 

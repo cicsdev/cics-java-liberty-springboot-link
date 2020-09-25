@@ -25,32 +25,34 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ibm.cicsdev.springboot.link.app.ui.Message;
 import com.ibm.cicsdev.springboot.link.app.ui.MessageRepository;
 
-/**
- * @author Matthew Willson, Ivan Hargreaves
- *
- */
+
 @Controller
 @RequestMapping("/")
-public class MessageController {
-
+public class MessageController 
+{
 	private final MessageRepository messageRepository;
 
+	
 	/**
 	 * @param messageRepository
 	 */
-	public MessageController(MessageRepository messageRepository) {
+	public MessageController(MessageRepository messageRepository) 
+	{
 		this.messageRepository = messageRepository;
 	}
+	
 	
 	/**
 	 * @return list all messages
 	 */
 	@GetMapping
-	public ModelAndView list() {
+	public ModelAndView list() 
+	{
 		Iterable<Message> messages = this.messageRepository.findAll();
 		return new ModelAndView("messages/list", "messages", messages);
 	}
 
+	
 	/**
 	 * @param message 
 	 * @return message with an id
@@ -60,15 +62,18 @@ public class MessageController {
 		return new ModelAndView("messages/view", "message", message);
 	}
 
+	
 	/**
 	 * @param message
 	 * @return a form to create a new message from the web UI
 	 */
 	@GetMapping("form")
-	public String createForm(@ModelAttribute Message message) {
+	public String createForm(@ModelAttribute Message message) 
+	{
 		return "messages/form";
 	}
 
+	
 	/**
 	 * @param message
 	 * @param result
@@ -76,8 +81,10 @@ public class MessageController {
 	 * @return a new message with a new id after execute Create Message
 	 */
 	@PostMapping
-	public ModelAndView create(@Valid Message message, BindingResult result, RedirectAttributes redirect) {
-		if (result.hasErrors()) {
+	public ModelAndView create(@Valid Message message, BindingResult result, RedirectAttributes redirect) 
+	{
+		if (result.hasErrors()) 
+		{
 			return new ModelAndView("messages/form", "formErrors", result.getAllErrors());
 		}
 		message = this.messageRepository.save(message);
@@ -85,6 +92,7 @@ public class MessageController {
 		return new ModelAndView("redirect:/{message.id}", "message.id", message.getId());
 	}
 
+	
 	/**
 	 * @return Whitelabel Error Page
 	 */
@@ -93,23 +101,27 @@ public class MessageController {
 		throw new RuntimeException("Expected exception in controller");
 	}
 
+	
 	/**
 	 * @param id
 	 * @return all messages except the deleted message with an id
 	 */
 	@GetMapping("delete/{id}")
-	public ModelAndView delete(@PathVariable("id") Long id) {
+	public ModelAndView delete(@PathVariable("id") Long id) 
+	{
 		this.messageRepository.deleteMessage(id);
 		Iterable<Message> messages = this.messageRepository.findAll();
 		return new ModelAndView("messages/list", "messages", messages);
 	}
 
+	
 	/**
 	 * @param message
 	 * @return a form for modifying the message with an id
 	 */
 	@GetMapping("modify/{id}")
-	public ModelAndView modifyForm(@PathVariable("id") Message message) {
+	public ModelAndView modifyForm(@PathVariable("id") Message message) 
+	{
 		return new ModelAndView("messages/form", "message", message);
 	}
 
