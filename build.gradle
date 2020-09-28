@@ -35,7 +35,7 @@ dependencies
     // Spring Boot web starter dependency
     implementation("org.springframework.boot:spring-boot-starter-web")
   
-    // Validation (constraint annotation support)  
+    // Validation (Annotation support, for validating Web input forms)  
     implementation("org.springframework.boot:spring-boot-starter-validation");
   	
     // Spring Boot thymeleaf view dependency

@@ -52,7 +52,7 @@
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     
-    <!-- Validation (constraint annotation support) -->
+    <!-- Validation (Annotation support, for validating Web input forms) -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-validation</artifactId>
