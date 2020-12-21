@@ -1,17 +1,12 @@
        CBL CICS('COBOL3,SP')
       *---------------------------------------------------------------*
-      *  Licensed Materials - Property of IBM                         *
-      *  SAMPLE                                                       *
       *  (c) Copyright IBM Corp. 2020 All Rights Reserved             *
-      *  US Government Users Restricted Rights - Use, duplication or  *
-      *  disclosure restricted by GSA ADP Schedule Contract with      *
-      *  IBM Corp                                                     *
       *---------------------------------------------------------------*
 
       *****************************************************************
       * Link to Spring Boot sample driver program                     *
       *                                                               *
-      * This program can be used the initial program of a transaction *
+      * This program can be used as the initial program of a txn      *
       * to call YOSPRING, passing a suitable channel.  YOSPRING will  *
       * invoke a Spring Boot application in a Liberty JVM server.     *
       *****************************************************************
