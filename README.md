@@ -102,8 +102,8 @@ This creates a WAR file inside the `target` directory.
 ## Deploying to a CICS Liberty JVM server
 
 - Ensure you have the following features defined in your Liberty `server.xml`:           
-    - `<cicsts:link-1.0>`. 
-    - `<cicsts:security-1.0>` if CICS security is enabled.
+    - `<feature>cicsts:link-1.0</feature>`
+    - `<feature>cicsts:security-1.0</feature>` if CICS security is enabled
     
 - Deployment option 1:
     - Copy and paste the built WAR from your *target* or *build/libs* directory into a Eclipse CICS bundle project and create a new WAR bundlepart that references the WAR file. Then deploy the CICS bundle project from CICS Explorer using the **Export Bundle Project to z/OS UNIX File System** wizard.
