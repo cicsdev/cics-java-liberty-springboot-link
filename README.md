@@ -6,8 +6,7 @@ This sample demonstrates how you can link to a Spring Boot application in a Libe
 
   - CICS TS V5.5 with APAR PH14856, or later
   - A configured Liberty JVM server in CICS
-  - Java SE 1.8 on the z/OS system
-  - Java SE 1.8 on the workstation
+  - Java SE 1.8 or later on the workstation
   - An Eclipse development environment on the workstation (optional)
   - Either Gradle or Apache Maven on the workstation (optional if using Wrappers)
   
