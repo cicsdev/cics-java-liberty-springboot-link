@@ -19,8 +19,10 @@ public class CICSCallable {
     @Autowired
     private MessageRepository messageRepo;
     
-    private static final String INPUT_CONTAINER = "MESSAGE"; // Name of CICS container used for input
-    private static final String CICS_PROGRAM = "YOSPRING";   // Name of CICS program entry point
+    // Name of CICS container used for input
+    private static final String INPUT_CONTAINER = "MESSAGE"; 
+    // Name of CICS program entry point
+    private static final String CICS_PROGRAM = "YOSPRING";  
 
 
     /**
@@ -39,22 +41,30 @@ public class CICSCallable {
      */
 
     @CICSProgram(value = CICS_PROGRAM)
-    public void callMeFromCICS() throws CicsConditionException {
+    public void callMeFromCICS() throws CicsConditionException  
+    {
         
         String messageText;
 
         // Get the CICS task, and the current channel        
         Channel chan = Task.getTask().getCurrentChannel();
         
-        // If no channel or container preset the message
-        if (chan == null) {
+        // If no channel preset the message
+        if (chan == null) 
+        {
             messageText = "NO CHANNEL";
-        } else {
-            // Get the input string from the input container if it was passed in
-            Container cont = chan.getContainer(INPUT_CONTAINER);
-            if (cont != null) {
+        } 
+        else
+        // Get the input string from the input container if it was passed in
+        {          
+            Container cont = chan.getContainer(INPUT_CONTAINER);            
+            if (cont != null) 
+            {
+                // If no channel preset the message
                 messageText = cont.getString();
-            } else {
+            } 
+            else 
+            {
                 messageText = "NO CONTAINER";
             }
         }
