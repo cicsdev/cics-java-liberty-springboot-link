@@ -6,41 +6,74 @@ package com.ibm.cicsdev.springboot.link.app.ui.cics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.ibm.cics.server.CCSIDErrorException;
-import com.ibm.cics.server.ChannelErrorException;
-import com.ibm.cics.server.CodePageErrorException;
-import com.ibm.cics.server.ContainerErrorException;
+import com.ibm.cics.server.CicsConditionException;
 import com.ibm.cics.server.Task;
+import com.ibm.cics.server.Container;
+import com.ibm.cics.server.Channel;
 import com.ibm.cics.server.invocation.CICSProgram;
 import com.ibm.cicsdev.springboot.link.app.ui.Message;
 import com.ibm.cicsdev.springboot.link.app.ui.MessageRepository;
 
-
 @Component
-public class CICSCallable 
-{
-	@Autowired
-	private MessageRepository messageRepo;
+public class CICSCallable {
+    @Autowired
+    private MessageRepository messageRepo;
+    
+    // Name of CICS container used for input
+    private static final String INPUT_CONTAINER = "MESSAGE"; 
+    // Name of CICS program entry point
+    private static final String CICS_PROGRAM = "YOSPRING";  
 
-	/**
-	 * Take a message passed from CICS and save it in the MessageRespository.
-	 * The message is passed on the current channel in a container called MESSAGE.
-	 *  
-	 * After saving the message it should be visible from the web UI provided by this application.
-	 * 
-	 * @throws ContainerErrorException
-	 * @throws ChannelErrorException
-	 * @throws CCSIDErrorException
-	 * @throws CodePageErrorException
-	 */
-	@CICSProgram(value ="YOSPRING") // This method can be invoked by EXEC CICS LINK PROGRAM(YOSPRING)
-	public void callMeFromCICS() throws ContainerErrorException, ChannelErrorException, CCSIDErrorException, CodePageErrorException 
-	{	
-		String messageText = Task.getTask().getCurrentChannel().getContainer("MESSAGE").getString();	
-		Message msg = new Message();
-		msg.setSummary("Message from CICS");
-		msg.setText(messageText);
-		this.messageRepo.save(msg);
-	}
+
+    /**
+     * Take a message passed from CICS and save it in the MessageRespository. 
+     * The message is passed on the current channel in a container defined by INPUT_CONTAINER.
+     * 
+     * This method can be invoked by the following CICS commands
+     * EXEC CICS PUT CONTAINER(MESSAGE) CHANNEL(xx) FROM("HELLO") 
+     * EXEC CICS LINK PROGRAM(YOSPRING) CHANNEL(xx)
+     * 
+     * If no CONTAINER is provided on the link then a default message is created
+     * 
+     * After saving the message it should be visible from the web UI provided by this application.
+     * 
+     * @throws CicsConditionException
+     */
+
+    @CICSProgram(value = CICS_PROGRAM)
+    public void callMeFromCICS() throws CicsConditionException  
+    {
+        
+        String messageText;
+
+        // Get the CICS task, and the current channel        
+        Channel chan = Task.getTask().getCurrentChannel();
+        
+        // If no channel preset the message
+        if (chan == null) 
+        {
+            messageText = "NO CHANNEL";
+        } 
+        else
+        // Get the input string from the input container if it was passed in
+        {          
+            Container cont = chan.getContainer(INPUT_CONTAINER);            
+            if (cont != null) 
+            {
+                // If no channel preset the message
+                messageText = cont.getString();
+            } 
+            else 
+            {
+                messageText = "NO CONTAINER";
+            }
+        }
+
+        // Build the message to add to the repository 
+        Message msg = new Message();
+        msg.setSummary("Message from CICS");
+        msg.setText(messageText);
+        this.messageRepo.save(msg);
+    }
 
 }
