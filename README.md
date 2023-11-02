@@ -140,7 +140,7 @@ Alternatively, you can use CECI to invoke the sample program:
 CECI PUT CONTAINER(MESSAGE) CHAR FROM(HELLO) CHANNEL(CHAN)
 CECI LINK PROG(YOSPRING) CHANNEL(CHAN)
 ```
-Ensure you run both commands in the same CECI seesion.
+Ensure you run both commands in the same CECI session.
 
 3. After invoking the Spring Boot applicaiton from CICS, you can view its web front end. Find the URL the application is published on in `messages.log` e.g. `http://myzos.mycompany.com:32000/cics-java-liberty-springboot-link-0.1.0/`. You should be able to see a message created by CICS!
 
