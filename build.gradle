@@ -1,6 +1,6 @@
 plugins
 {
-	id 'org.springframework.boot' version '2.7.18' 
+	id 'org.springframework.boot' version '2.7.0' 
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'eclipse'
@@ -14,7 +14,6 @@ archivesBaseName='cics-java-liberty-springboot-link'
 version = '0.1.0'
 sourceCompatibility = '1.8'
 
-
 // If in Eclipse, add Javadoc to the local project classpath
 eclipse 
 {
@@ -24,12 +23,10 @@ eclipse
     }
 }
 
-
 repositories 
 {
     mavenCentral()
 }
-
 
 dependencies 
 {
@@ -55,10 +52,8 @@ dependencies
     // Don't include JCICS components in the final build (no need for version because we have BOM)
     compileOnly("com.ibm.cics:com.ibm.cics.server")                 
     compileOnly ("com.ibm.cics:com.ibm.cics.server.invocation.annotations")
-  
     
 }
-
 
 
 publishing {
