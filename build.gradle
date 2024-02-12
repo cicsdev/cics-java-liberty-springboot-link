@@ -12,7 +12,6 @@ plugins
 group = 'com.ibm.cicsdev.springboot'
 archivesBaseName='cics-java-liberty-springboot-link'
 version = '0.1.0'
-sourceCompatibility = '1.8'
 
 // If in Eclipse, add Javadoc to the local project classpath
 eclipse 
@@ -26,6 +25,16 @@ eclipse
 repositories 
 {
     mavenCentral()
+}
+
+java
+{
+    toolchain
+    {
+        languageVersion = JavaLanguageVersion.of(java_version)
+        vendor = JvmVendorSpec.IBM
+        implementation = JvmImplementation.J9
+    }
 }
 
 dependencies 
@@ -46,8 +55,10 @@ dependencies
     compileOnly enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")	
     annotationProcessor enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")
     
-    // Enable CICS Link to Liberty annotation processor    
-    annotationProcessor ("com.ibm.cics:com.ibm.cics.server.invocation")    
+    // Enable CICS Link to Liberty annotation processor   
+    // Note: Java 11 support is only currently available in the 6.1 version of the annotation processor. 
+    // This is backwards compatible with older version so long as we don't use the new function in 6.1 (Link to CDI beans).
+    annotationProcessor ("com.ibm.cics:com.ibm.cics.server.invocation:6.1")
 	
     // Don't include JCICS components in the final build (no need for version because we have BOM)
     compileOnly("com.ibm.cics:com.ibm.cics.server")                 
