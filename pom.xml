@@ -6,8 +6,8 @@
   <!-- Inherit defaults from Spring Boot Parent-->
   <parent>
     <groupId>org.springframework.boot</groupId>
-	  <artifactId>spring-boot-starter-parent</artifactId>
-      <version>2.7.0</version>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.7.0</version>
   </parent>
 
   <!--  Application properties -->
@@ -15,11 +15,11 @@
   <artifactId>cics-java-liberty-springboot-link</artifactId>
   <version>0.1.0</version>
   <name>cics-java-liberty-springboot-link</name>
-  <description>Demo project for Spring Boot</description>	
+  <description>Demo project for Spring Boot</description>
   <properties>
     <java.version>1.8</java.version>
   </properties>
-	
+
   <!-- CICS TS V5.5 BOM (as of May 2020) -->
   <dependencyManagement>
     <dependencies>
@@ -34,30 +34,31 @@
   </dependencyManagement>
 
   <dependencies>
-    <!-- Compile against, but don't include JCICS in the final build (version and scope are from BOM) -->
+    <!-- Compile against, but don't include JCICS in the final build (version and scope are from
+    BOM) -->
     <dependency>
       <groupId>com.ibm.cics</groupId>
       <artifactId>com.ibm.cics.server</artifactId>
     </dependency>
-    
+
     <!-- CICS Annotations -->
     <dependency>
       <groupId>com.ibm.cics</groupId>
       <artifactId>com.ibm.cics.server.invocation.annotations</artifactId>
     </dependency>
-           
-    <!-- Spring web support --> 
+
+    <!-- Spring web support -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-    
-   <!-- Validation annotation support for validating Web input forms -->
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-		</dependency>
-		
+
+    <!-- Validation annotation support for validating Web input forms -->
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+    </dependency>
+
     <!-- Thymeleaf view -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -69,25 +70,33 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-tomcat</artifactId>
       <scope>provided</scope>
-    </dependency>		
+    </dependency>
+
+    <!-- Add tiles-el dependency if using JSF, see README for more details -->
+    <dependency>
+      <groupId>org.apache.tiles</groupId>
+      <artifactId>tiles-el</artifactId>
+      <version>3.0.8</version>
+    </dependency>
+
   </dependencies>
-	
+
   <!-- Package as an executable war (default jar) -->
   <packaging>war</packaging>
-	
+
   <!-- Build with Maven and CICS annotation processor -->
   <build>
-    <plugins>    
+    <plugins>
       <!-- Spring Boot plugin for Maven -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
-            
+
       <!-- Enable the Link to Liberty annotation processor -->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>	  	  
+        <configuration>
           <annotationProcessorPaths>
             <annotationProcessorPath>
               <groupId>com.ibm.cics</groupId>
@@ -99,9 +108,9 @@
       </plugin>
     </plugins>
   </build>
-	
 
-    <!-- 
+
+  <!-- 
     Publishes artifacts to here if the deploy goal is used. 
 
     The values here can be passed on the maven command line
@@ -110,15 +119,15 @@
     for example:
     -Dpublish_repo_snapshots_name=my-repo 
     -->
-    <distributionManagement>
-        <snapshotRepository>
-            <id>${publish_repo_snapshots_name}</id>
-            <url>${publish_repo_snapshots_url}</url>
-        </snapshotRepository>
-        <repository>
-            <id>${publish_repo_releases_name}</id>
-            <url>${publish_repo_releases_url}</url>
-        </repository>
-    </distributionManagement>
+  <distributionManagement>
+    <snapshotRepository>
+      <id>${publish_repo_snapshots_name}</id>
+      <url>${publish_repo_snapshots_url}</url>
+    </snapshotRepository>
+    <repository>
+      <id>${publish_repo_releases_name}</id>
+      <url>${publish_repo_releases_url}</url>
+    </repository>
+  </distributionManagement>
 
 </project>

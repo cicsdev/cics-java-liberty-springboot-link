@@ -55,6 +55,9 @@ For an IDE, taking Eclipse as an example, the plug-ins for Gradle *buildship* an
 
 The required build-tasks are typically `clean bootWar` for Gradle and `clean package` for Maven. Once run, Gradle will generate a WAR file in the `build/libs` directory, while Maven will generate it in the `target` directory.
 
+**Note:**
+If the Liberty server uses the JSF feature then the application build should add a dependency for tiles-el. This is required because javax.el.ELResolver is eligible for injection as mandated by the JSF specification and failure to add this to the build will cause a java.lang.NoClassDefFoundError for org.apache.tiles.el.ScopeELResolver at application startup.
+
 **Note:** When building a WAR file for deployment to Liberty it is good practice to exclude Tomcat from the final runtime artifact. We demonstrate this in the pom.xml with the *provided* scope, and in build.gradle with the *providedRuntime()* dependency.
 
 **Note:** If you import the project to your IDE, you might experience local project compile errors. To resolve these errors you should run a tooling refresh on that project. For example, in Eclipse: right-click on "Project", select "Gradle -> Refresh Gradle Project", **or** right-click on "Project", select "Maven -> Update Project...".
