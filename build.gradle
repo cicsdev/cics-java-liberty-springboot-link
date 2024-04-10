@@ -52,7 +52,9 @@ dependencies
     // Don't include JCICS components in the final build (no need for version because we have BOM)
     compileOnly("com.ibm.cics:com.ibm.cics.server")                 
     compileOnly ("com.ibm.cics:com.ibm.cics.server.invocation.annotations")
-    
+
+    //Add tiles-el dependency if using JSF, see READ for more details 
+    implementation ("org.apache.tiles:tiles-el:3.0.8")    
 }
 
 
