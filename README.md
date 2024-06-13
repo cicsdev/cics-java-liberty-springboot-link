@@ -1,4 +1,5 @@
 # cics-java-liberty-springboot-link
+[![Build](https://github.com/cicsdev/cics-java-liberty-springboot-link/actions/workflows/java.yaml/badge.svg)](https://github.com/cicsdev/cics-java-liberty-springboot-link/actions/workflows/java.yaml)
 
 This sample demonstrates how you can link to a Spring Boot application in a Liberty JVM server from a CICS program. The application is based on a Spring Boot sample application that demonstrates Spring MVC, so has both a web front-end and a CICS entry point using the link to Liberty `@CICSProgram` annotation. The sample shows how both entry points can access the same data.
 
