@@ -12,7 +12,6 @@ plugins
 group = 'com.ibm.cicsdev.springboot'
 archivesBaseName='cics-java-liberty-springboot-link'
 version = '0.1.0'
-sourceCompatibility = '1.8'
 
 // If in Eclipse, add Javadoc to the local project classpath
 eclipse 
@@ -26,6 +25,16 @@ eclipse
 repositories 
 {
     mavenCentral()
+}
+
+java
+{
+    toolchain
+    {
+        languageVersion = JavaLanguageVersion.of(java_version)
+        vendor = JvmVendorSpec.IBM
+        implementation = JvmImplementation.J9
+    }
 }
 
 dependencies 
@@ -44,10 +53,10 @@ dependencies
   
     // CICS TS V5.5 Maven BOM (as of 19th May 2020)
     compileOnly enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")	
-    annotationProcessor enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")
+    //annotationProcessor enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")
     
     // Enable CICS Link to Liberty annotation processor    
-    annotationProcessor ("com.ibm.cics:com.ibm.cics.server.invocation")    
+    annotationProcessor ("com.ibm.cics:com.ibm.cics.server.invocation:6.1")    
 	
     // Don't include JCICS components in the final build (no need for version because we have BOM)
     compileOnly("com.ibm.cics:com.ibm.cics.server")                 

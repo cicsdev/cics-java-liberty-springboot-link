@@ -18,6 +18,10 @@
   <description>Demo project for Spring Boot</description>
   <properties>
     <java.version>1.8</java.version>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
   </properties>
 
   <!-- CICS TS V5.5 BOM (as of May 2020) -->
@@ -101,7 +105,7 @@
             <annotationProcessorPath>
               <groupId>com.ibm.cics</groupId>
               <artifactId>com.ibm.cics.server.invocation</artifactId>
-              <version>5.5-PH14856</version>
+              <version>6.1</version>
             </annotationProcessorPath>
           </annotationProcessorPaths>
         </configuration>
