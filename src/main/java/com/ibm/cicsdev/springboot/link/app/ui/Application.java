@@ -33,13 +33,8 @@ public class Application
 	@Bean
 	public Converter<String, Message> messageConverter() 
 	{
-		return new Converter<String, Message>() 
-		{
-			@Override
-			public Message convert(String id) 
-			{
-				return messageRepository().findMessage(Long.valueOf(id));
-			}
+		return id -> {
+			return messageRepository().findMessage(Long.valueOf(id));
 		};
 	}
 
