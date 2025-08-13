@@ -27,16 +27,6 @@ repositories
     mavenCentral()
 }
 
-java
-{
-    toolchain
-    {
-        languageVersion = JavaLanguageVersion.of(java_version)
-        vendor = JvmVendorSpec.IBM
-        implementation = JvmImplementation.J9
-    }
-}
-
 dependencies 
 {
     // Spring Boot web starter dependency
@@ -50,17 +40,18 @@ dependencies
 
     // Don't include TomCat in the runtime build, but put it in lib-provided so it can run standalone as well as embedded
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
-  
-    // CICS TS V5.5 Maven BOM (as of 19th May 2020)
-    compileOnly enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")	
-    //annotationProcessor enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:5.5-20200519131930-PH25409")
+
+	// CICS TS V5.5 Maven BOM
+    def bom = "com.ibm.cics:com.ibm.cics.ts.bom:5.5-20250812140737-PH63855" 	
+
+    compileOnly enforcedPlatform(bom)
+    annotationProcessor enforcedPlatform(bom)
     
-    // Enable CICS Link to Liberty annotation processor    
-    annotationProcessor ("com.ibm.cics:com.ibm.cics.server.invocation:6.1")    
-	
-    // Don't include JCICS components in the final build (no need for version because we have BOM)
-    compileOnly("com.ibm.cics:com.ibm.cics.server")                 
-    compileOnly ("com.ibm.cics:com.ibm.cics.server.invocation.annotations")
+    annotationProcessor("com.ibm.cics:com.ibm.cics.server.invocation")  
+
+    // Don't include JCICS components in the final build (no need for version because we have BOM)  
+    compileOnly("com.ibm.cics:com.ibm.cics.server")
+    compileOnly("com.ibm.cics:com.ibm.cics.server.invocation.annotations")
 
     //Add tiles-el dependency if using JSF, see READ for more details 
     implementation ("org.apache.tiles:tiles-el:3.0.8")    
