@@ -7,9 +7,9 @@ package com.ibm.cicsdev.springboot.link.app.ui;
 
 import java.util.Calendar;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
-public class Message 
+public class Message
 {
 	private Long id;
 
