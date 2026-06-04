@@ -4,7 +4,7 @@
 
 package com.ibm.cicsdev.springboot.link.app.ui.mvc;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
