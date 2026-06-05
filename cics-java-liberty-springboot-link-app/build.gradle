@@ -9,8 +9,7 @@ plugins
 }
 
 group = 'com.ibm.cicsdev.springboot'
-archivesBaseName='cics-java-liberty-springboot-link'
-version = '0.1.0'
+version = '1.0.0'
 
 // ============================================================================
 // Java Configuration
@@ -19,6 +18,19 @@ java {
     sourceCompatibility = JavaVersion.toVersion(java_version)
     targetCompatibility = JavaVersion.toVersion(java_version)
 }
+
+// ============================================================================
+// WAR Configuration
+// ============================================================================
+war
+{
+    archiveFileName = "cics-java-liberty-springboot-link-app-${version}.war"
+}
+
+// Two versions of the WAR would be built, one for embedding into servers like Liberty (plain)
+// and a bootWAR which can run standalone and contains all the Tomcat and Spring Boot stuff
+// we don't need bootWAR, so disable it.
+bootWar { enabled = false }
 
 // If in Eclipse, add Javadoc to the local project classpath
 eclipse
