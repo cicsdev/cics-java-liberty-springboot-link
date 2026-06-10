@@ -1,8 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
+  
   <!-- Inherit defaults from Spring Boot Parent-->
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -10,24 +10,27 @@
     <version>3.5.9</version>
     <relativePath/>
   </parent>
-
-  <!--  Application properties -->
-  <groupId>com.ibm.cicsdev.springboot</groupId>
+  
+  <!-- ================================================================ -->
+  <!-- Project Coordinates                                              -->
+  <!-- ================================================================ -->
+  <groupId>com.ibm.cicsdev</groupId>
   <artifactId>cics-java-liberty-springboot-link</artifactId>
-  <version>0.1.0</version>
-  <name>cics-java-liberty-springboot-link</name>
-  <description>Demo project for Spring Boot</description>
+  <version>1.0.0</version>
+  <description>Demo project for Spring Boot with CICS Link</description>
+  <packaging>pom</packaging>
+  
   <properties>
     <java.version>17</java.version>
-
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.target>${java.version}</maven.compiler.target>
-    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.release>${java.version}</maven.compiler.release>
+    <cics.jvmserver>DFHWLP</cics.jvmserver>
   </properties>
-
-  <!-- CICS TS V6.1 BOM (as of Sept 2024) -->
+  
+  <!-- Dependency Management -->
   <dependencyManagement>
     <dependencies>
+      <!-- CICS TS V6.1 BOM (as of Sept 2024) -->
       <dependency>
         <groupId>com.ibm.cics</groupId>
         <artifactId>com.ibm.cics.ts.bom</artifactId>
@@ -37,81 +40,13 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
-  <dependencies>
-    <!-- Compile against, but don't include JCICS in the final build (version and scope are from
-    BOM) -->
-    <dependency>
-      <groupId>com.ibm.cics</groupId>
-      <artifactId>com.ibm.cics.server</artifactId>
-    </dependency>
-
-    <!-- CICS Annotations -->
-    <dependency>
-      <groupId>com.ibm.cics</groupId>
-      <artifactId>com.ibm.cics.server.invocation.annotations</artifactId>
-    </dependency>
-
-    <!-- Spring web support -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-
-    <!-- Validation annotation support for validating Web input forms -->
-    <dependency>
-      <groupId>jakarta.validation</groupId>
-      <artifactId>jakarta.validation-api</artifactId>
-    </dependency>
-
-    <!-- Thymeleaf view -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-thymeleaf</artifactId>
-    </dependency>
-
-    <!-- Don't include TomCat in the runtime build, but put it in lib-provided so it can run standalone as well as embedded  -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-tomcat</artifactId>
-      <scope>provided</scope>
-    </dependency>
-
-    <!-- Add tiles-el dependency if using JSF, see README for more details -->
-    <dependency>
-      <groupId>org.apache.tiles</groupId>
-      <artifactId>tiles-el</artifactId>
-      <version>3.0.8</version>
-    </dependency>
-
-  </dependencies>
-
-  <!-- Package as an executable war (default jar) -->
-  <packaging>war</packaging>
-
-  <!-- Build with Maven and CICS annotation processor -->
-  <build>
-    <plugins>
-      <!-- Spring Boot plugin for Maven -->
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
-
-      <!-- Enable the Link to Liberty annotation processor -->
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.12.1</version>
-        <configuration>
-          <annotationProcessorPaths>
-            <annotationProcessorPath>
-              <groupId>com.ibm.cics</groupId>
-              <artifactId>com.ibm.cics.server.invocation</artifactId>
-            </annotationProcessorPath>
-          </annotationProcessorPaths>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+  
+  <!-- ================================================================ -->
+  <!-- Modules                                                          -->
+  <!-- ================================================================ -->
+  <modules>
+    <module>cics-java-liberty-springboot-link-app</module>
+    <module>cics-java-liberty-springboot-link-cicsbundle</module>
+  </modules>
 
 </project>
