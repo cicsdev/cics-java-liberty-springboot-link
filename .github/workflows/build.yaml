@@ -43,7 +43,7 @@ jobs:
           distribution: "semeru"
           cache: maven
       - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots --file pom.xml -Djava.version=${{ matrix.jdk }} package
+        run: mvn --batch-mode --update-snapshots --file pom.xml -Djava.version=${{ matrix.jdk }} verify
 
   build-mvnw:
     name: Build Maven Wrapper
@@ -61,7 +61,7 @@ jobs:
           distribution: "semeru"
           cache: maven
       - name: Build with Maven
-        run: ./mvnw --batch-mode --update-snapshots --file pom.xml -Djava.version=${{ matrix.jdk }} package
+        run: ./mvnw --batch-mode --update-snapshots --file pom.xml -Djava.version=${{ matrix.jdk }} verify
 
   build-gradle:
     name: Build Gradle
@@ -80,7 +80,7 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
     - name: Build with Gradle
-      run: ./gradlew build -Pjava_version=${{ matrix.jdk }}
+      run: ./gradlew clean build -Pjava_version=${{ matrix.jdk }}
       
   build-gradlew:
     name: Build Gradle wrapper
@@ -97,6 +97,6 @@ jobs:
         java-version: ${{ matrix.jdk }}
         distribution: 'semeru'
     - name: Build with Gradle Wrapper
-      run: ./gradlew build -Pjava_version=${{ matrix.jdk }}
+      run: ./gradlew clean build -Pjava_version=${{ matrix.jdk }}
 
 

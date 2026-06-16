@@ -17,11 +17,13 @@ buildNumber.properties
 
 # Eclipse
 bin/
-.settings/
-.classpath
-.project
 .apt_generated/
 .factorypath
+
+# Allow Eclipse project files for easy import
+!.settings/
+!.classpath
+!.project
 
 # IntelliJ IDEA
 .idea/
