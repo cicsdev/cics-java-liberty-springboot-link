@@ -74,12 +74,13 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- Add tiles-el dependency if using JSF, see README for more details -->
+    <!-- Add tiles-el dependency only if using JSF - see README for more details
     <dependency>
       <groupId>org.apache.tiles</groupId>
       <artifactId>tiles-el</artifactId>
       <version>3.0.8</version>
     </dependency>
+    -->
 
   </dependencies>
 
