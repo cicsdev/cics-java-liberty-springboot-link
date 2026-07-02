@@ -1,7 +1,7 @@
 plugins
 {
-	id 'org.springframework.boot' version '3.5.13'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'org.springframework.boot' version '3.5.16'
+	id 'io.spring.dependency-management' version '1.1.7'
 	id 'java'
 	id 'eclipse'
 	id 'idea'
@@ -73,6 +73,6 @@ dependencies
     compileOnly("com.ibm.cics:com.ibm.cics.server")
     compileOnly("com.ibm.cics:com.ibm.cics.server.invocation.annotations")
 
-    //Add tiles-el dependency if using JSF, see READ for more details 
-    implementation ("org.apache.tiles:tiles-el:3.0.8")    
+    // Add tiles-el dependency only if using JSF - see README for more details
+    // implementation ("org.apache.tiles:tiles-el:3.0.8")
 }
