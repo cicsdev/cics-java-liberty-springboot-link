@@ -2,10 +2,10 @@
 <server description="Liberty server for CICS Spring Boot Link sample">
 
     <featureManager>
+        <!-- Required for Spring Boot 3.x and Jakarta EE 10 -->
+        <feature>servlet-6.0</feature>
         <!-- Link to Liberty support -->
         <feature>cicsts:link-1.0</feature>
-        <!-- Enable CICS security if required -->
-        <feature>cicsts:security-1.0</feature>
     </featureManager>
 
 </server>

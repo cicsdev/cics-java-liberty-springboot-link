@@ -25,7 +25,7 @@ java {
 // ============================================================================
 war
 {
-    archiveFileName = "cics-java-liberty-springboot-link-app-${version}.war"
+    archiveFileName = 'cics-java-liberty-springboot-link.war'
 }
 
 // Two versions of the WAR would be built, one for embedding into servers like Liberty (plain)
@@ -39,6 +39,17 @@ eclipse
     classpath
     {
         downloadJavadoc = true
+    }
+    wtp
+    {
+        facet
+        {
+            facet name: 'jst.web', version: '6.0'
+        }
+        component
+        {
+            contextPath = 'cics-java-liberty-springboot-link'
+        }
     }
 }
 
