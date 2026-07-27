@@ -72,11 +72,9 @@ dependencies
     // Don't include TomCat in the runtime build, but put it in lib-provided so it can run standalone as well as embedded
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 
-	// CICS TS V6.1 Maven BOM (as of Sept 2024)
-	   def bom = "com.ibm.cics:com.ibm.cics.ts.bom:6.1-20250812133513-PH63856"
-
-    compileOnly enforcedPlatform(bom)
-    annotationProcessor enforcedPlatform(bom)
+	// CICS TS Maven BOM (version from gradle.properties)
+	   compileOnly enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:${project.property('cics.bom.version')}")
+	   annotationProcessor enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:${project.property('cics.bom.version')}")
     
     annotationProcessor("com.ibm.cics:com.ibm.cics.server.invocation")  
 
