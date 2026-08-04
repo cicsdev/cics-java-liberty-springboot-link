@@ -49,4 +49,19 @@
     <module>cics-java-liberty-springboot-link-cicsbundle</module>
   </modules>
 
+  <!-- ================================================================ -->
+  <!-- Build Configuration                                              -->
+  <!-- ================================================================ -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <release>${java.version}</release>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
