@@ -2,9 +2,9 @@ name: Build
 
 on:
   push:
-    branches: ["main"]
+    branches: ["springboot/v3"]
   pull_request:
-    branches: ["main"]
+    branches: ["springboot/v3"]
 
 permissions:
   contents: read
