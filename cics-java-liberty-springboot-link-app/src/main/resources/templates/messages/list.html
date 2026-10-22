@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
-	<head th:replace="fragments :: head(title=~{::title/text()})">
+	<head th:replace="~{fragments :: head(title=~{::title/text()})}">
 		<title th:text="#{list.title}">Messages : View all</title>
 	</head>
 	<body>
 		<div class="container">
-			<div th:replace="fragments :: navbar"></div>
+			<div th:replace="~{fragments :: navbar}"></div>
 			<div class="float-right mt-2">
 				<a class="btn btn-primary btn-sm" href="form.html" th:href="@{/form}" th:text="#{list.create}">Create Message</a>
 			</div>
