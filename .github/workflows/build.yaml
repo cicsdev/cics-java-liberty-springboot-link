@@ -2,9 +2,9 @@ name: Build
 
 on:
   push:
-    branches: ["springboot/v3"]
+    branches: ["springboot/v4"]
   pull_request:
-    branches: ["springboot/v3"]
+    branches: ["springboot/v4"]
 
 permissions:
   contents: read
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        jdk: [17, 21, 25]
+        jdk: [21, 25]
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK ${{ matrix.jdk }}
@@ -53,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        jdk: [17, 21, 25]
+        jdk: [21, 25]
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK ${{ matrix.jdk }}
@@ -70,7 +70,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        jdk: [17, 21, 25]
+        jdk: [21, 25]
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK ${{ matrix.jdk }}
@@ -92,7 +92,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        jdk: [17, 21, 25]
+        jdk: [21, 25]
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK ${{ matrix.jdk }}
