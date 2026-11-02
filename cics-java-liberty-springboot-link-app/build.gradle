@@ -14,8 +14,10 @@ version = '1.0.0'
 // ============================================================================
 // Java Configuration
 // ============================================================================
-java {
-    toolchain {
+java
+{
+    toolchain
+    {
         languageVersion = JavaLanguageVersion.of(java_version)
     }
 }

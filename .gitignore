@@ -24,6 +24,7 @@ bin/
 !.settings/
 !.classpath
 !.project
+!.factorypath
 
 # IntelliJ IDEA
 .idea/
