@@ -70,7 +70,7 @@ Alternatively, download the sample as a [ZIP](https://github.com/cicsdev/cics-ja
 
 Before building this sample, you should verify that the correct CICS TS bill of materials (BOM) is specified for your target release of CICS. The BOM specifies a consistent set of artifacts, and adds information about their scope. In the example below the version specified is compatible with CICS TS V6.1 with JCICS APAR PH63856, or newer. That is, the Java byte codes built by compiling against this version of JCICS will be compatible with later CICS TS versions and subsequent JCICS APARs.
 
-You can browse the published versions of the CICS BOM at [Maven Central.](https://mvnrepository.com/artifact/com.ibm.cics/com.ibm.cics.ts.bom)
+You can browse the published versions of the CICS BOM at [Maven Central.](https://mvnrepository.com/artifact/com.ibm.cics/com.ibm.cics.ts.bom) The BOM version can be updated to match your target CICS TS release.
 
 Gradle (build.gradle):
 
@@ -159,14 +159,16 @@ This method uses the cics-bundle-gradle-plugin or cics-bundle-maven-plugin to au
 
 **Configure your JVM server name:**
 
-Gradle (`cics-java-liberty-springboot-link-cicsbundle/build.gradle`):
-```gradle
-cics.jvmserver = 'YOUR_JVMSERVER_NAME'  // e.g., 'DFHWLP'
+The JVM server name defaults to `DFHWLP`. To use a different name, pass the `cics.jvmserver` property when building.
+
+Gradle:
+```shell
+./gradlew clean build "-Pcics.jvmserver=MYJVM"
 ```
 
-Maven (`cics-java-liberty-springboot-link-cicsbundle/pom.xml`):
-```xml
-<cics.jvmserver>YOUR_JVMSERVER_NAME</cics.jvmserver>  <!-- e.g., DFHWLP -->
+Maven:
+```shell
+./mvnw clean verify "-Dcics.jvmserver=MYJVM"
 ```
 
 **Deploy the bundle:**
@@ -208,7 +210,7 @@ This repository includes a pre-configured Eclipse CICS bundle project `cics-java
 
 ```xml
 <application id="cics-java-liberty-springboot-link"
-    location="${server.config.dir}/springapps/cics-java-liberty-springboot-link.war"
+    location="${server.config.dir}/apps/cics-java-liberty-springboot-link.war"
     name="cics-java-liberty-springboot-link" type="war">
     <application-bnd>
         <security-role name="cicsAllAuthenticated">
