@@ -49,7 +49,7 @@
     <!-- Spring web support -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
+      <artifactId>spring-boot-starter-webmvc</artifactId>
     </dependency>
 
     <!-- Validation annotation support for validating Web input forms -->

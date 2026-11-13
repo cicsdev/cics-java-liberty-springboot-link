@@ -1,7 +1,6 @@
 # Gradle
 .gradle/
 **/build/
-!gradle/wrapper/gradle-wrapper.jar
 
 # Maven
 target/
@@ -60,3 +59,6 @@ Desktop.ini
 *.zip
 *.tar.gz
 *.rar
+
+# Gradle wrapper - must come after *.jar (git applies the last matching rule)
+!gradle/wrapper/gradle-wrapper.jar
