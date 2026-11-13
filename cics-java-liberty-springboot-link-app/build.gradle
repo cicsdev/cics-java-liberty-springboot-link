@@ -63,7 +63,7 @@ repositories
 dependencies
 {
     // Spring Boot web starter dependency
-    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-webmvc")
   
     // Validation anotation support, for validating Web input forms
     implementation("jakarta.validation:jakarta.validation-api");
